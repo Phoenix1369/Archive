@@ -8,7 +8,6 @@ int sum(int n) { return n*(n+1)/2; }
 int main()
 {
 	// freopen(CODE "_sample_input.txt", "r", stdin);
-	// freopen("p1.in", "r", stdin);
 	freopen(CODE ".txt", "r", stdin);
 	freopen(CODE ".out", "w", stdout);
 	scanf("%d", &T);
@@ -30,9 +29,3 @@ int main()
 	}
 	return 0;
 }
-/*
-3
-3 2
-3 3
-3 30
-*/
