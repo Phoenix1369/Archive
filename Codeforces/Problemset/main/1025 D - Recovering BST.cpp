@@ -18,12 +18,7 @@ int main()
 		g[i][j] = (gcd(a[i], a[j]) > 1);
 	for(int i = 1; i <= n; ++i)
 		g[0][i] = g[i][n+1] = true;
-	for(int i = 1; i <= n; ++i)
-	{	// Singleton
-		dpl[i][i] = g[i][i+1];
-		dpr[i][i] = g[i-1][i];
-	}
-	for(int k = 1; k < n; ++k)
+	for(int k = 0; k < n; ++k)
 	for(int i = 1; i+k <= n; ++i)
 	{
 		int j = i+k;
