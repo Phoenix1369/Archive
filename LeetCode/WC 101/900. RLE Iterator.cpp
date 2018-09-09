@@ -2,14 +2,14 @@
 typedef vector<int> vin;
 
 class RLEIterator {
-public:
     vin b;
-    
+
+public:
     RLEIterator(vector<int> A) {
         b = vin(A);
         reverse(ALL(b));
     }
-    
+
     int next(int n) {
         while(!b.empty() && n > b.back()) {
             n -= b.back();

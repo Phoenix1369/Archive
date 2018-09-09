@@ -1,9 +1,10 @@
 class Solution {
-public:
     const static int MAXN = 205;
     const int MOD = 1e9+7;
-    int dp[MAXN][MAXN]{ };
-    
+
+    int dp[MAXN][MAXN]{ }; // dp[i][j]: permutation of length i, ends with j
+
+public:
     int numPermsDISequence(string S) {
         int n = (int)S.size() + 1;
         for(int j = 1; j <= n; ++j) {
