@@ -5,11 +5,7 @@ int n, x, y;
 
 int main() {
 	scanf("%d", &n);
-	for (int i = 0; i < n; ++i) {
-		scanf(" %d%d", &x, &y);
-		X += x;
-		Y += y;
-	}
+	for (int j = 0; j < 2; ++j)
 	for (int i = 0; i < n; ++i) {
 		scanf(" %d%d", &x, &y);
 		X += x;
