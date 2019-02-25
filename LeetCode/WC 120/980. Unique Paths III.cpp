@@ -1,4 +1,3 @@
-// const int MAXD = 4;
 const int MAXN = 20;
 const int EXPN = 1<<MAXN;
 const int moves[4][2] = {{0,-1},{+1,0},{0,+1},{-1,0}};
