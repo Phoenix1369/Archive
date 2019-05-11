@@ -6,6 +6,7 @@ class Solution {
 
 public:
     vector<int> sortArray(vector<int>& nums) {
+//      sort(ALL(nums));
         N = nums.size();
         copy = vector<int>(N, 0);
         mergesort(nums, 0, N);

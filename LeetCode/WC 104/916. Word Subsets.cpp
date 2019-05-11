@@ -1,5 +1,6 @@
+const int MAXA = 26;
+
 class Solution {
-    const static int MAXA = 26;
 public:
     vector<string> wordSubsets(vector<string>& A, vector<string>& B) {
         int bnt[MAXA]{ };
