@@ -8,7 +8,7 @@ int M[MAXN]{ };
 class Solution {
 public:
     vector<int> threeEqualParts(vector<int>& A) {
-        int n = (int)A.size();
+        int n = A.size();
         H[0] = 0;
         M[0] = 1;
         for (int i = 1; i <= n; ++i) {
@@ -36,3 +36,4 @@ public:
         return {-1,-1};
     }
 };
+
