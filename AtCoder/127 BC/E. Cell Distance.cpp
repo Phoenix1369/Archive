@@ -2,16 +2,12 @@
 constexpr int MOD = 1e9+7;
 int K, M, N;
 
-constexpr int fpm(int base, int index) {
-    int power = 1;
-    while (index) {
-        if (index & 1) {
-            power = 1LL * base * power % MOD;
-        }
-        base = 1LL * base * base % MOD;
-        index >>= 1;
-    }
-    return power;
+constexpr int fpm(int base, int index, int power = 1) {
+    if (!index) return power;
+    int nb = 1LL * base * base % MOD;
+    int ni = index >> 1;
+    int np = (index & 1) ? 1LL * base * power % MOD : power;
+    return fpm(nb, ni, np);
 }
 constexpr int inv2 = fpm(2, MOD-2);
 
