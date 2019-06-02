@@ -1,6 +1,6 @@
 class Solution {
-public
-    int fixedPoint(vectorint& A) {
+public:
+    int fixedPoint(vector<int>& A) {
         int N = A.size();
         for (int i = 0; i < N; ++i) {
             if (A[i] == i) {
@@ -10,4 +10,3 @@ public
         return -1;
     }
 };
-
