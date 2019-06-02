@@ -27,27 +27,26 @@ public:
         }
 
         // Splice remaining type into result.
-        int T = tmp.size();
         ret.clear();
+        int T = tmp.size();
         for (int i = 0; i < T; ++i) {
             if (!cnt.empty()) {
                 int val = cnt.begin()->first;
-                if (i) {
-                    if ((tmp[i-1] != val) && (tmp[i] != val)) {
-                        push(val);
-                    }
-                } else if (tmp[i] != val) {
+                if (i && (tmp[i-1] != val) && (tmp[i] != val)) {
+                    push(val);
+                } else if (!i && (tmp[i] != val)) {
                     push(val);
                 }
             }
             ret.push_back(tmp[i]);
         }
         if (!cnt.empty()) {
-            ret.push_back(cnt.begin()->first);
+            push(cnt.begin()->first);
         }
 
         return ret;
     }
+
 private:
     void push(int val) {
         ret.push_back(val);
