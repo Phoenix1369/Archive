@@ -22,7 +22,7 @@ int main() {
                 ++free;
             }
         }
-		bool yes = (beta >= 1) && (free >= 1) && ((beta >= 2) || (free == 1));
+        bool yes = (beta >= 1) && (free >= 1) && ((beta >= 2) || (free == 1));
         printf("Case #%d: %c\n", t, yes ? 'Y' : 'N');
     }
     return 0;
