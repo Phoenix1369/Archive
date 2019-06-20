@@ -8,52 +8,30 @@ char E[MAXE];
 int N, T;
 
 char eval_and(char A, char B) {
-    if (A == B) {
-        return A;
-    }
-    if (A == '0') {
-        return '0';
-    }
-    if (A == '1') {
-        return B;
-    }
+    if (A == B) return A;
+    if (A == '0') return '0';
+    if (A == '1') return B;
     return '0';
 }   // (A < B) -> (A, B) = (X, x)
 
 char eval_or(char A, char B) {
-    if (A == B) {
-        return A;
-    }
-    if (A == '0') {
-        return B;
-    }
-    if (A == '1') {
-        return '1';
-    }
+    if (A == B) return A;
+    if (A == '0') return B;
+    if (A == '1') return '1';
     return '1';
 }   // (A < B) -> (A, B) = (X, x)
 
 char eval_xor(char A, char B) {
-    if (A == B) {
-        return '0';
-    }
-    if (A == '0') {
-        return B;
-    }
-    if (A == '1') {
-        return B ^ ('X' ^ 'x');
-    }
+    if (A == B) return '0';
+    if (A == '0') return B;
+    if (A == '1') return B ^ ('X' ^ 'x');
     return '1';
 }   // (A < B) -> (A, B) = (X, x)
 
 char eval(char A, char op, char B) {
     if (A > B) std::swap(A, B);
-    switch (op) {
-    case '&':
-        return eval_and(A, B);
-    case '|':
-        return eval_or(A, B);
-    }
+    if (op == '&') return eval_and(A, B);
+    if (op == '|') return eval_or(A, B);
     return eval_xor(A, B);
 }   // (op == '^')
 
@@ -91,4 +69,3 @@ int main() {
     }
     return 0;
 }
-
