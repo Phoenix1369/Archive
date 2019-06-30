@@ -39,7 +39,7 @@ int main() {
 #else
     freopen(PROBLEM ".txt", "r", stdin);
     freopen(PROBLEM ".out", "w", stdout);
-#endif
+#endif // SOLVE
     scanf("%d", &T);
     init();
     for (int t = 1; t <= T; ++t) {

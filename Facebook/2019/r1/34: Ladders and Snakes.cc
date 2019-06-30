@@ -135,7 +135,7 @@ int solve() {
                         add_edge(v, N + P, weight);
                         add_edge(N + P, u, weight);
                     }
-                    // Ignore zero-width edges: may as well not exit.
+                    // Ignore zero-width edges: may be freely blocked.
                 }
                 adj[j] = i;
             }
