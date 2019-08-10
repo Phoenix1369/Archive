@@ -15,14 +15,7 @@ private:
             return 0;
         }
         for (int k = 0; l+k < r-k; ++k) {
-            bool yes = true;
-            for (int i = 0; i <= k; ++i) {
-                if (S[l+i] != S[r-(k-i)]) {
-                    yes = false;
-                    break;
-                }
-            }
-            if (yes) {
+            if (S.compare(l, k+1, S, r-k, k+1) == 0) {
                 return 2 + solve(l+k+1, r-k-1);
             }
         }
