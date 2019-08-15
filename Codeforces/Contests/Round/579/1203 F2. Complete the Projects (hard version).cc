@@ -27,48 +27,36 @@ struct Pair {
   }
 } P[MAXN];
 
-int solve(int R) {
-  int ret = 0;
+void init() {
   for (int i = 0; i <= n; ++i) {
     dp[i] = -1;
   }
+}
 
-  // Maximize rating
-  int pos;
-  for (pos = 1; pos <= n; ++pos) {
-    if (R < P[pos].a) continue;
-    if (P[pos].b < 0) break;
-
-    int sum = R + P[pos].b;
-    if (sum >= 0) {
-      R = sum;
-      ++ret;
-    }
-  }
-  dp[ret] = R;
-  for (int i = pos; i <= n; ++i) {
-    for (int j = i; j > ret; --j) {
+int solve() {
+  dp[0] = r;
+  for (int i = 1; i <= n; ++i) {
+    for (int j = i; j >= 1; --j) {
       if (dp[j-1] < P[i].a) {
         continue;
       }
       dp[j] = std::max(dp[j-1] + P[i].b, dp[j]);
     } // Augment with P[i]
   }
-  for (int i = n; i > ret; --i) {
-    if (dp[i] >= 0) {
-      return i;
-    }
+  for (int i = n; i >= 0; --i) {
+    if (dp[i] >= 0) return i;
   }
-  return ret;
+  return -1;
 }
 
 int main() {
   scanf(" %d%d", &n, &r);
+  init();
   for (int i = 1; i <= n; ++i) {
     scanf(" %d%d", &P[i].a, &P[i].b);
     P[i].a = std::max(P[i].a, -P[i].b);
   }
   std::sort(P+1, P+n+1);
-  printf("%d\n", solve(r));
+  printf("%d\n", solve());
   return 0;
 }
