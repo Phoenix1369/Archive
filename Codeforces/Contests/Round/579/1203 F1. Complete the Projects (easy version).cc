@@ -11,16 +11,13 @@ struct Pair {
   bool operator < (const Pair& o) const {
     int s = sgn(b);
     int os = sgn(o.b);
-    // +1 -> 0 -> -1
-    if (s != os) return (s > os);
-    // (s == os)
-    if (s >= 0) return (a < o.a);
-    // (sl == -1)
+
+    if (s != os) return (s > os);  // +1 -> 0 -> -1
+    if (s >= 0) return (a < o.a);  // (s == os)
+    // (s == -1)
     int c = a + b;
     int oc = o.a + o.b;
-    if (c == oc) {
-      return (a > o.a);
-    }
+    if (c == oc) return (a > o.a);
     return (c > oc);
   }
 } P[MAXN];
