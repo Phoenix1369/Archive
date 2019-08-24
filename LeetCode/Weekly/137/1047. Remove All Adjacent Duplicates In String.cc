@@ -1,9 +1,7 @@
 class Solution {
-    string res;
-
 public:
     string removeDuplicates(string S) {
-        res.clear();
+        string res;
         for (char c: S) {
             if (res.empty() || res.back() != c) {
                 res.push_back(c);
@@ -14,4 +12,3 @@ public:
         return res;
     }
 };
-
