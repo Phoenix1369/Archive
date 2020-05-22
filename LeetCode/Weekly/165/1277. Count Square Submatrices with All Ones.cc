@@ -1,5 +1,5 @@
 const int MAXN = 305;
-int A[MAXN][MAXN]{ };
+int dp[2][MAXN];
 int M, N;
 
 class Solution {
@@ -8,31 +8,19 @@ public:
         N = matrix.size();
         M = matrix[0].size();
         init();
-        for (int i = 0; i < N; ++i) {
-            for (int j = 0; j < M; ++j) {
-                A[i+1][j+1] = matrix[i][j];
-            }
-        }
-        for (int i = 1; i <= N; ++i) {
-            for (int j = 1; j <= M; ++j) {
-                A[i][j] += A[i-1][j];
-            }
-        }
-        for (int i = 1; i <= N; ++i) {
-            for (int j = 1; j <= M; ++j) {
-                A[i][j] += A[i][j-1];
-            }
-        }
         int ret = 0;
-        for (int i = 1; i <= N; ++i) {
-            for (int j = 1; j <= M; ++j) {
-                int beg = min(i, j);
-                for (int k = beg; k >= 1; --k) {
-                    int sum = A[i][j] - A[i-k][j] - A[i][j-k] + A[i-k][j-k];
-                    if (sum == k*k) {
-                        ++ret;
-                    }
+        for (int h = 0; h < N; ++h) {
+            int i = (h & 1);
+            for (int j = 0; j < M; ++j) {
+                if (h && j && matrix[h][j]) {
+                    dp[i][j] = min(
+                        min(dp[i^1][j], dp[i][j-1]),
+                        dp[i^1][j-1]
+                    ) + 1;
+                } else {
+                    dp[i][j] = matrix[h][j];
                 }
+                ret += dp[i][j];
             }
         }
         return ret;
@@ -40,17 +28,10 @@ public:
 
 private:
     void init() {
-        for (int i = 0; i <= N; ++i) {
-            for (int j = 0; j <= M; ++j) {
-                A[i][j] = 0;
+        for (int i = 0; i < 2; ++i) {
+            for (int j = 0; j < M; ++j) {
+                dp[i][j] = 0;
             }
         }
     }
 };
-
-/*
-[[0,1,1,1],[1,1,1,1],[0,1,1,1]]
-[[1,0,1],[1,1,0],[1,1,0]]
->> 15
->> 7
-*/
