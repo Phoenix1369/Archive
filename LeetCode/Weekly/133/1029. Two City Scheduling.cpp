@@ -3,19 +3,15 @@
 class Solution {
 public:
     int twoCitySchedCost(vector<vector<int>>& costs) {
-        vector<int> data;
+        sort(ALL(costs), [](const vector<int>& lhs, const vector<int>& rhs) {
+            return (lhs[0] - lhs[1]) < (rhs[0] - rhs[1]);
+        });
         int N = costs.size();
-        int sum = 0;
-        for (auto& cost: costs) {
-            data.push_back(cost[1] - cost[0]);
-            sum += cost[1];
+        N /= 2;
+        int ret = 0;
+        for (int i = 0; i < N; ++i) {
+            ret += costs[i][0] + costs[i+N][1];
         }
-        sort(ALL(data));
-        int half = N / 2;
-        for (int i = 0; i < half; ++i) {
-            sum -= data.back();
-            data.pop_back();
-        }
-        return sum;
+        return ret;
     }
 };
